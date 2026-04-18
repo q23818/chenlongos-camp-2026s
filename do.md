@@ -118,3 +118,22 @@ mkdir -p /Users/liu/opencamp/chenlongos/2026s/homework/01-arceos-helloworld/
 - screenshot1.png ~ screenshot5.png
 
 
+
+-------------------------------------------------------
+## 3. homework task2 - SPI 协议深入学习
+
+**考核**：产出一份详细学习文档
+
+文档路径：`homework/02-spi-protocol/spi-learning.md`
+
+**文档涵盖：**
+1. SPI 协议基础（四线、主从架构）
+2. 四种工作模式（CPOL/CPHA）
+3. 与 I2C/UART 对比
+4. 算能 SG2002 SPI 控制器（寄存器、操作流程）
+5. ArceOS 驱动开发要点（Rust 实现、embedded-hal）
+6. ESP32-CAM SPI 图像传输实战
+7. SPI → TPU 推理完整 Pipeline
+
+
+

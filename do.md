@@ -156,7 +156,7 @@ mkdir -p /Users/liu/opencamp/chenlongos/2026s/homework/01-arceos-helloworld/
 - 在 cnb.cool Workspace（sophgo/tpuc_dev 容器）中逐步操作
 - 结果：`homework/03-tpu-mlir/02-manual/results/`
 - bmodel：`homework/03-tpu-mlir/02-manual/models/`
-- 状态：⬜ 待完成
+- 状态：✅ 2026-04-19 完成
 
 **方式3：SG2002 硬件推理**
 - 使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上推理

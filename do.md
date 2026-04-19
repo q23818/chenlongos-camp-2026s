@@ -149,19 +149,20 @@ mkdir -p /Users/liu/opencamp/chenlongos/2026s/homework/01-arceos-helloworld/
 
 **方式1：cnb.cool CI 自动执行**
 - 配置 `.cnb.yml`，push 触发全自动流程
+- 状态：✅ 已完成
+- 详细步骤：`homework/03-tpu-mlir/01-ci/README.md`
 - 结果：`homework/03-tpu-mlir/01-ci/results/`
-- 状态：✅ 已完成（dog_onnx.jpg / dog_f16.jpg / dog_int8_sym.jpg）
 
 **方式2：云原生开发环境手动执行**
-- 在 cnb.cool Workspace（sophgo/tpuc_dev 容器）中逐步操作
-- 结果：`homework/03-tpu-mlir/02-manual/results/`
-- bmodel：`homework/03-tpu-mlir/02-manual/models/`
+- 在 cnb.cool Workspace（sophgo/tpuc_dev 容器）中通过 WebIDE 终端逐步操作
 - 状态：✅ 2026-04-19 完成
+- 详细步骤：`homework/03-tpu-mlir/02-manual/README.md`
+- 结果：`homework/03-tpu-mlir/02-manual/results/` + `homework/03-tpu-mlir/02-manual/models/`
 
 **方式3：SG2002 硬件推理**
 - 使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上推理
-- 结果：`homework/03-tpu-mlir/03-sg2002/results/`
 - 状态：⬜ 待完成
+- 结果：`homework/03-tpu-mlir/03-sg2002/results/`
 
 ### 编译流程
 

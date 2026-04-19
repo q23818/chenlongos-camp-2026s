@@ -49,10 +49,22 @@ yolov5s.onnx
 
 CI配置，见 `.cnb.yml`，push 后自动触发。结果存放于 `01-ci/results/`。
 
+**执行过程：** push 到 cnb.cool 时自动在 `sophgo/tpuc_dev:latest` 容器中依次执行：
+安装 tpu_mlir → 下载模型和资源 → onnx 推理 → model_transform → model_deploy F16 → F16 推理 → run_calibration → model_deploy INT8 → INT8 推理 → commit 结果回仓库
+
+**产出：**
+- `01-ci/results/dog_onnx.jpg`
+- `01-ci/results/dog_f16.jpg`
+- `01-ci/results/dog_int8_sym.jpg`
+
 ## 方式2：手动执行（云原生开发环境）
 
-在 cnb.cool Workspace 中使用 `sophgo/tpuc_dev:latest` 镜像，逐步执行编译和推理命令。
-结果存放于 `02-manual/results/`，编译产出的 bmodel 存放于 `02-manual/models/`。
+在 cnb.cool Workspace 中使用 `sophgo/tpuc_dev:latest` 镜像，通过 WebIDE 终端逐步执行编译和推理命令。与方式1流程完全相同，但全程人工操作，便于观察每一步的输出和中间产物。
+
+**产出：**
+- `02-manual/results/dog_onnx.jpg` / `dog_f16.jpg` / `dog_int8_sym.jpg`
+- `02-manual/models/yolov5s_1684x_f16.bmodel`
+- `02-manual/models/yolov5s_1684x_int8_sym.bmodel`
 
 ## 方式3：SG2002 硬件推理
 

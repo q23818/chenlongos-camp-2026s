@@ -68,7 +68,9 @@ CI配置，见 `.cnb.yml`，push 后自动触发。结果存放于 `01-ci/result
 
 ## 方式3：SG2002 硬件推理
 
-使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上通过 sophon-sail 或 bmrt 执行推理。
+- 原计划：使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上通过 sophon-sail 或 bmrt 执行推理。
+- 没有使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上推理
+- 在 LicheeRV Nano（SG2002）上使用系统自带的 cvimodel 进行推理
 结果存放于 `03-sg2002/results/`。
 
 ## 参考资料

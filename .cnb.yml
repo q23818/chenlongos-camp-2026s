@@ -1,4 +1,4 @@
-hw03-tpu-mlir:
+main:
   push:
     - docker:
         image: sophgo/tpuc_dev:latest

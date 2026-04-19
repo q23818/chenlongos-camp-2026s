@@ -160,9 +160,10 @@ mkdir -p /Users/liu/opencamp/chenlongos/2026s/homework/01-arceos-helloworld/
 - 结果：`homework/03-tpu-mlir/02-manual/results/` + `homework/03-tpu-mlir/02-manual/models/`
 
 **方式3：SG2002 硬件推理**
-- 使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上推理
-- 状态：⬜ 待完成
-- 结果：`homework/03-tpu-mlir/03-sg2002/results/`
+- 在 LicheeRV Nano（SG2002）上使用系统自带的 cvimodel 进行推理
+- 状态：✅ 2026-04-19 完成
+- 详细步骤：`homework/03-tpu-mlir/03-sg2002/README.md`
+- 结果：`homework/03-tpu-mlir/03-sg2002/results/result.jpg`
 
 ### 编译流程
 

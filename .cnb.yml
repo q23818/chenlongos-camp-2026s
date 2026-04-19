@@ -109,5 +109,5 @@ main:
             git config user.email "ci@cnb.cool"
             git config user.name "CI Bot"
             git add homework/03-tpu-mlir/01-ci/ homework/03-tpu-mlir/02-manual/models/
-            git commit -m "ci: update detection results and bmodels [skip ci]"
+            git commit -m "ci: update detection results and bmodels"
             git push

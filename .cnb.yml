@@ -1,6 +1,22 @@
 main:
   push:
-    - docker:
+    - name: sync-to-github
+      stages:
+        - name: sync to github
+          image: tencentcom/git-sync
+          imports: https://cnb.cool/q02/secrets/-/blob/main/github.yml
+          settings:
+            target_url: https://github.com/q23818/chenlongos-camp-2026s.git
+            auth_type: https
+            username: ${GIT_USERNAME}
+            password: ${GIT_TOKEN}
+            branch: main
+
+    - name: hw03-tpu-mlir
+      ifModify:
+        - homework/03-tpu-mlir/.cnb.yml
+        - .cnb.yml
+      docker:
         image: sophgo/tpuc_dev:latest
       stages:
         - name: install tpu_mlir
@@ -93,5 +109,5 @@ main:
             git config user.email "ci@cnb.cool"
             git config user.name "CI Bot"
             git add homework/03-tpu-mlir/01-ci/ homework/03-tpu-mlir/02-manual/models/
-            git commit -m "ci: update detection results and bmodels"
+            git commit -m "ci: update detection results and bmodels [skip ci]"
             git push

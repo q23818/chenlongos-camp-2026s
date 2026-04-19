@@ -111,3 +111,13 @@ main:
             git add homework/03-tpu-mlir/01-ci/ homework/03-tpu-mlir/02-manual/models/
             git commit -m "ci: update detection results and bmodels"
             git push
+
+$:
+  vscode:
+    - docker:
+        image: sophgo/tpuc_dev:latest
+      services:
+        - vscode
+      stages:
+        - name: install tpu_mlir
+          script: pip install tpu_mlir[onnx]

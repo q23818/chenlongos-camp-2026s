@@ -137,3 +137,36 @@ mkdir -p /Users/liu/opencamp/chenlongos/2026s/homework/01-arceos-helloworld/
 
 
 
+
+-------------------------------------------------------
+## 4. homework task3 - tpu-mlir YOLOv5s Dog Detection
+
+**考核**：跑通 dog.jpg 识别，得到画框结果图片
+
+参考：https://github.com/sophgo/tpu-mlir
+
+### 三种完成方式
+
+**方式1：cnb.cool CI 自动执行**
+- 配置 `.cnb.yml`，push 触发全自动流程
+- 结果：`homework/03-tpu-mlir/01-ci/results/`
+- 状态：✅ 已完成（dog_onnx.jpg / dog_f16.jpg / dog_int8_sym.jpg）
+
+**方式2：云原生开发环境手动执行**
+- 在 cnb.cool Workspace（sophgo/tpuc_dev 容器）中逐步操作
+- 结果：`homework/03-tpu-mlir/02-manual/results/`
+- bmodel：`homework/03-tpu-mlir/02-manual/models/`
+- 状态：⬜ 待完成
+
+**方式3：SG2002 硬件推理**
+- 使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上推理
+- 结果：`homework/03-tpu-mlir/03-sg2002/results/`
+- 状态：⬜ 待完成
+
+### 编译流程
+
+```
+yolov5s.onnx → model_transform → yolov5s.mlir
+    ├─ model_deploy F16  → yolov5s_1684x_f16.bmodel
+    └─ run_calibration + model_deploy INT8 → yolov5s_1684x_int8_sym.bmodel
+```

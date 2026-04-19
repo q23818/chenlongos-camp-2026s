@@ -83,13 +83,15 @@ main:
 
         - name: commit results back to repo
           script: |
-            mkdir -p results
-            cp model_yolov5s/dog_onnx.jpg results/
-            cp model_yolov5s/dog_f16.jpg results/
-            cp model_yolov5s/dog_int8_sym.jpg results/
-            ls -lh results/
+            mkdir -p 01-ci/results
+            cp model_yolov5s/dog_onnx.jpg 01-ci/results/
+            cp model_yolov5s/dog_f16.jpg 01-ci/results/
+            cp model_yolov5s/dog_int8_sym.jpg 01-ci/results/
+            cp model_yolov5s/workspace/yolov5s_1684x_f16.bmodel 02-manual/models/
+            cp model_yolov5s/workspace/yolov5s_1684x_int8_sym.bmodel 02-manual/models/
+            ls -lh 01-ci/results/ 02-manual/models/
             git config user.email "ci@cnb.cool"
             git config user.name "CI Bot"
-            git add results/
-            git commit -m "ci: add yolov5s detection results (onnx/f16/int8)"
+            git add 01-ci/ 02-manual/models/
+            git commit -m "ci: add detection results and compiled bmodels"
             git push

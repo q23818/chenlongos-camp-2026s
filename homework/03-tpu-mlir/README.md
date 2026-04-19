@@ -1,6 +1,6 @@
 # hw03 - tpu-mlir YOLOv5s Dog Detection
 
-辰龙OS训练营 2026S 导学作业第3题：使用 tpu-mlir 跑通 dog.jpg 目标检测，产出三张画框结果图。
+辰龙OS训练营 2026S 导学作业第3题：使用 tpu-mlir 跑通 dog.jpg 目标检测，产出画框结果图。
 
 ## 任务目标
 
@@ -12,7 +12,15 @@
 - 镜像：`sophgo/tpuc_dev:latest`
 - 工具：`tpu_mlir` Python 包
 
-## 完整流程
+## 三种完成方式
+
+| 目录 | 方式 | 说明 |
+|------|------|------|
+| `01-ci/` | cnb.cool CI 自动执行 | push 触发，全自动产出结果 |
+| `02-manual/` | 云原生开发环境手动执行 | 在 cnb.cool Workspace 中逐步操作 |
+| `03-sg2002/` | 在机器人 SG2002 上执行 | 使用编译好的 bmodel 在真实硬件推理 |
+
+## 编译流程
 
 ```
 yolov5s.onnx
@@ -29,7 +37,7 @@ yolov5s.onnx
     │               └─ detect_yolov5 ──────→ dog_int8_sym.jpg
 ```
 
-## 结果图片
+## 结果对比
 
 | 文件 | 模型 | 量化类型 | 说明 |
 |------|------|----------|------|
@@ -37,15 +45,23 @@ yolov5s.onnx
 | `dog_f16.jpg` | yolov5s_1684x_f16.bmodel | F16 | 半精度，精度损失极小 |
 | `dog_int8_sym.jpg` | yolov5s_1684x_int8_sym.bmodel | INT8 对称量化 | 最终部署格式，推理速度最快 |
 
-结果图片由 CI 产出，存放于 `results/` 目录。
+## 方式1：CI 自动执行
 
-## CI 配置
+CI配置，见 `.cnb.yml`，push 后自动触发。结果存放于 `01-ci/results/`。
 
-见 `.cnb.yml`，push 后自动触发。
+## 方式2：手动执行（云原生开发环境）
+
+在 cnb.cool Workspace 中使用 `sophgo/tpuc_dev:latest` 镜像，逐步执行编译和推理命令。
+结果存放于 `02-manual/results/`，编译产出的 bmodel 存放于 `02-manual/models/`。
+
+## 方式3：SG2002 硬件推理
+
+使用方式2产出的 bmodel，在 LicheeRV Nano（SG2002）上通过 sophon-sail 或 bmrt 执行推理。
+结果存放于 `03-sg2002/results/`。
 
 ## 参考资料
 
-- [tpu-mlir Quick Start - Compile ONNX Model](https://tpumlir.org/quick_start_en/03_onnx.html)
+- [tpu-mlir Quick Start](https://tpumlir.org/quick_start_en/03_onnx.html)
 - [tpu-mlir GitHub](https://github.com/sophgo/tpu-mlir)
 - [SG2002 产品页](https://milkv.io/chips/sg2002)
 - [辰龙OS训练营 2026S](https://opencamp.cn/ChenLongOS/camp/2026S)
